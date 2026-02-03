@@ -24,12 +24,22 @@ public class Main {
         }
         System.out.println("Enter Email ");
         String email= scan.next();
+        scan.nextLine();
         String regex3="^[a-z]{3,}(\\.[a-z]{3,})?@[a-z]{2,}\\.[a-z]{2,}(\\.[a-z]{2,})?$";
         if(email.matches(regex3)){
             System.out.println("Valid Email ");
         }
         else{
             System.out.println("Invalid Email ");
+        }
+        System.out.println("Enter MObile Number with Country Code ");
+        String mobile= scan.nextLine();
+        String regex4="[0-9]{2}\\s[0-9]{10}";
+        if(mobile.matches(regex4)){
+            System.out.println("Valid Mobile Number  ");
+        }
+        else{
+            System.out.println("Invalid Mobile Number ");
         }
     }
 }
