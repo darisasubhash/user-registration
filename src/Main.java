@@ -43,7 +43,7 @@ public class Main {
         }
         System.out.println("Enter your Password ");
         String password= scan.next();
-        String regex5="^(?=.*[A-Z]).{8,}$";
+        String regex5="^(?=.*[A-Z])(?=.*[0-9]).{8,}$";
         if(password.matches(regex5)){
             System.out.println("Valid Password ");
         }
