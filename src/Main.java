@@ -22,5 +22,14 @@ public class Main {
         else{
             System.out.println("Invalid Last Name ");
         }
+        System.out.println("Enter Email ");
+        String email= scan.next();
+        String regex3="^[a-z]{3,}(\\.[a-z]{3,})?@[a-z]{2,}\\.[a-z]{2,}(\\.[a-z]{2,})?$";
+        if(email.matches(regex3)){
+            System.out.println("Valid Email ");
+        }
+        else{
+            System.out.println("Invalid Email ");
+        }
     }
 }
