@@ -41,5 +41,14 @@ public class Main {
         else{
             System.out.println("Invalid Mobile Number ");
         }
+        System.out.println("Enter your Password ");
+        String password= scan.next();
+        String regex5="^[A-Za-z0-9]{8,}$";
+        if(password.matches(regex5)){
+            System.out.println("Valid Password ");
+        }
+        else{
+            System.out.println("Invalid Password ");
+        }
     }
 }
