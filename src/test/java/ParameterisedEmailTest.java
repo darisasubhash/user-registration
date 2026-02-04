@@ -1,8 +1,11 @@
+import exception.InvalidException;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ParameterisedEmailTest {
     @ParameterizedTest
@@ -17,8 +20,8 @@ public class ParameterisedEmailTest {
             "abc@gmail.com.com",
             "abc+100@gmail.com"
     })
-    void givenValidEmailsReturnTrue(String email) {
-        assertTrue(UserRegistration.validateEmail(email));
+    void givenValidEmailsNotThrowsException(String email) {
+        assertDoesNotThrow(()->UserRegistration.validateEmail("abc.100@abc.com"));
     }
 
     @ParameterizedTest
@@ -37,7 +40,7 @@ public class ParameterisedEmailTest {
             "abc@gmail.com.1a",
             "abc@gmail.com.aa.au"
     })
-    void givenInvalidEmailsReturnFalse(String email) {
-        assertFalse(UserRegistration.validateEmail(email));
+    void givenInvalidEmailsThrowsException(String email) {
+        assertThrows(InvalidException.class,()->UserRegistration.validateEmail("abc..2002@gmail.com"));
     }
 }

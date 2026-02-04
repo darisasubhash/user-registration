@@ -1,3 +1,5 @@
+import exception.InvalidException;
+
 import java.util.Scanner;
 
 public class UserRegistration {
@@ -8,50 +10,64 @@ public class UserRegistration {
     public static void main(String[] args) {
 
         Scanner scan = new Scanner(System.in);
-        System.out.println("Enter First Name");
-        String firstName = scan.next();
-        System.out.println(validateFirstName(firstName)
-                ? "Valid First Name" : "Invalid First Name");
+        try {
+            System.out.println("Enter First Name");
+            String firstName = scan.next();
+            validateFirstName(firstName);
+            System.out.println("Valid First Name ");
 
-        System.out.println("Enter Last Name");
-        String lastName = scan.next();
-        System.out.println(validateLastName(lastName)
-                ? "Valid Last Name" : "Invalid Last Name");
+            System.out.println("Enter Last Name");
+            String lastName = scan.next();
+            validateLastName(lastName);
+            System.out.println("Valid Last Name");
 
-        System.out.println("Enter Email");
-        String email = scan.next();
-        System.out.println(validateEmail(email)
-                ? "Valid Email" : "Invalid Email");
+            System.out.println("Enter Email");
+            String email = scan.next();
+            validateEmail(email);
+            System.out.println("Valid Email");
 
-        System.out.println("Enter Mobile Number with Country Code");
-        scan.nextLine(); // clear buffer
-        String mobile = scan.nextLine();
-        System.out.println(validateMobile(mobile)
-                ? "Valid Mobile Number" : "Invalid Mobile Number");
+            System.out.println("Enter Mobile Number with Country Code");
+            scan.nextLine();
+            String mobile = scan.nextLine();
+            validateMobile(mobile);
+            System.out.println("Valid Mobile Number");
 
-        System.out.println("Enter your Password");
-        String password = scan.next();
-        System.out.println(validatePassword(password)
-                ? "Valid Password" : "Invalid Password");
+            System.out.println("Enter your Password");
+            String password = scan.next();
+            validatePassword(password);
+            System.out.println("Valid Password");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
-    public static boolean validateFirstName(String firstName) {
-        return firstName.matches(NAME_REGEX);
+    public static void validateFirstName(String firstName) throws InvalidException {
+        if(!firstName.matches(NAME_REGEX)){
+            throw new InvalidException("Invalid First Name ");
+        }
     }
 
-    public static boolean validateLastName(String lastName) {
-        return lastName.matches(NAME_REGEX);
+    public static void validateLastName(String lastName) throws  InvalidException {
+        if(!lastName.matches(NAME_REGEX)){
+            throw new InvalidException("Invalid Last Name ");
+        }
     }
 
-    public static boolean validateEmail(String email) {
-        return email.matches(EMAIL_REGEX);
+    public static void validateEmail(String email) throws InvalidException {
+        if(!email.matches(EMAIL_REGEX)){
+            throw new InvalidException("Invalid Email Address ");
+        }
     }
 
-    public static boolean validateMobile(String mobile) {
-        return mobile.matches(MOBILE_REGEX);
+    public static void validateMobile(String mobile) throws InvalidException {
+        if(!mobile.matches(MOBILE_REGEX)){
+            throw new InvalidException("Invalid Mobile Number ");
+        }
     }
 
-    public static boolean validatePassword(String password) {
-        return password.matches(PASSWORD_REGEX);
+    public static void validatePassword(String password) throws InvalidException{
+        if (!password.matches(PASSWORD_REGEX)){
+            throw new InvalidException("Invalid Password ");
+        }
     }
 }
