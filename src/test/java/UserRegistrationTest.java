@@ -8,52 +8,52 @@ public class UserRegistrationTest {
 
     @Test
     void givenValidFirstNameNotThrowsException() {
-        assertDoesNotThrow(()->UserRegistration.validateFirstName("Subhash"));
+        assertDoesNotThrow(()->UserRegistration.firstNameValidator.validate("Subhash"));
     }
 
     @Test
     void givenValidLastNameNotThrowsException() {
-        assertDoesNotThrow(()->UserRegistration.validateLastName("Darisa"));
+        assertDoesNotThrow(()->UserRegistration.lastNameValidator.validate("Darisa"));
     }
 
     @Test
     void givenValidEmailNotThrowsException() {
-        assertDoesNotThrow(()->UserRegistration.validateEmail("abc.100@abc.com"));
+        assertDoesNotThrow(()->UserRegistration.emailValidator.validate("abc.100@abc.com"));
     }
 
     @Test
     void givenValidMobileNotThrowsException() {
-        assertDoesNotThrow(()->UserRegistration.validateMobile("91 9919812436"));
+        assertDoesNotThrow(()->UserRegistration.mobileValidator.validate("91 9919812436"));
     }
 
     @Test
     void givenValidPasswordNotThrowsException() {
-        assertDoesNotThrow(()->UserRegistration.validatePassword("Subh@123"));
+        assertDoesNotThrow(()->UserRegistration.passwordValidator.validate("Subh@123"));
     }
 
 
     @Test
     void givenInvalidFirstNameThrowsException() {
-        assertThrows(InvalidException.class, () -> UserRegistration.validateFirstName("subhash"));
+        assertThrows(InvalidException.class, () -> UserRegistration.firstNameValidator.validate("subhash"));
     }
 
     @Test
     void givenInvalidLastNameThrowsException() {
-        assertThrows(InvalidException.class,()->UserRegistration.validateLastName("darisa"));
+        assertThrows(InvalidException.class,()->UserRegistration.lastNameValidator.validate("darisa"));
     }
 
     @Test
     void givenInvalidEmailThrowsException() {
-        assertThrows(InvalidException.class,()->UserRegistration.validateEmail("abc..2002@gmail.com"));
+        assertThrows(InvalidException.class,()->UserRegistration.emailValidator.validate("abc..2002@gmail.com"));
     }
 
     @Test
     void givenInvalidMobileThrowsException() {
-        assertThrows(InvalidException.class,()->UserRegistration.validateMobile("919919819801"));
+        assertThrows(InvalidException.class,()->UserRegistration.mobileValidator.validate("919919819801"));
     }
 
     @Test
     void givenInvalidPasswordThrowsException() {
-        assertThrows(InvalidException.class,()->UserRegistration.validatePassword("abcdefg@"));
+        assertThrows(InvalidException.class,()->UserRegistration.passwordValidator.validate("abcdefg@"));
     }
 }

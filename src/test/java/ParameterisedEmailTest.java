@@ -21,7 +21,7 @@ public class ParameterisedEmailTest {
             "abc+100@gmail.com"
     })
     void givenValidEmailsNotThrowsException(String email) {
-        assertDoesNotThrow(()->UserRegistration.validateEmail("abc.100@abc.com"));
+        assertDoesNotThrow(()->UserRegistration.emailValidator.validate("abc.100@abc.com"));
     }
 
     @ParameterizedTest
@@ -41,6 +41,6 @@ public class ParameterisedEmailTest {
             "abc@gmail.com.aa.au"
     })
     void givenInvalidEmailsThrowsException(String email) {
-        assertThrows(InvalidException.class,()->UserRegistration.validateEmail("abc..2002@gmail.com"));
+        assertThrows(InvalidException.class,()->UserRegistration.emailValidator.validate("abc..2002@gmail.com"));
     }
 }
